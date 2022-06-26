@@ -1,10 +1,12 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS
 from models import db, MindModel
 
 app = Flask(__name__)
 app.config.from_pyfile("settings.py")
+CORS(app)
 
 db.init_app(app)
 migrate = Migrate(app, db)
