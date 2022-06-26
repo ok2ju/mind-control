@@ -1,1 +1,1 @@
-# mind-tracker
+# MindTracker
