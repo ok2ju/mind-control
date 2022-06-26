@@ -4,8 +4,7 @@ from flask_migrate import Migrate
 from models import db, MindModel
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:password@localhost:5432/mind-tracker"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_pyfile("settings.py")
 
 db.init_app(app)
 migrate = Migrate(app, db)
