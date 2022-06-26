@@ -14,7 +14,7 @@ migrate = Migrate(app, db)
 def print_hello():
     return "Hello, Flask!"
 
-@app.route("/records", methods = ["GET"])
+@app.route("/api/v1/records", methods = ["GET"])
 def get_records():
     records = MindModel.query.all()
     results = [
@@ -27,7 +27,7 @@ def get_records():
 
     return { "count": len(results), "entities": results }
 
-@app.route("/records", methods = ["POST"])
+@app.route("/api/v1/records", methods = ["POST"])
 def add_record():
     data = request.get_json()
     record = MindModel(mood = data["mood"], energy = data["energy"])
