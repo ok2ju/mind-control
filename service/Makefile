@@ -9,7 +9,6 @@ default: run-service
 
 run-service:
 	@ echo "---> Running service ..."
-	@ export FLASK_APP=app.py
 	@ flask run
 .PHONY: run-service
 
