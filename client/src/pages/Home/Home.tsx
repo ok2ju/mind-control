@@ -1,8 +1,8 @@
+import { Fragment } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'wouter';
 import dayjs from 'dayjs';
-import recordAPI from '../../api/record';
-import Header from '../../components/Header';
+import recordAPI from '../../api/record';;
 import MoodGrinIcon from '../../components/Icons/MoodGrin';
 import EnergyIcon from '../../components/Icons/Energy';
 
@@ -10,8 +10,7 @@ const Home = () => {
   const { status, data, error } = useQuery('records', recordAPI.list);
 
   return (
-    <div className="h-full bg-gray-100">
-      <Header />
+    <Fragment>
       {status === 'loading' && (
         <p>Loading...</p>
       )}
@@ -48,8 +47,15 @@ const Home = () => {
             </a>
           </Link>
         ))}
+        {!data?.entities?.length && (
+          <div  className="flex w-full justify-center items-center">
+            <div>
+              <p>There are no records</p>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </Fragment>
   );
 };
 
