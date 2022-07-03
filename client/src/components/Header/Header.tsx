@@ -1,8 +1,24 @@
-import { LINKS } from './constants';
-import Link from '../../components/Link';
+import { useRef } from 'react';
+import NavLink from './NavLink';
 import Logo from '../../components/Icons/Logo';
+import RecordDialog from '../RecordDialog';
+import { NavLinkTypes } from '../../types/nav';
 
 const Header = () => {
+  const dialog = useRef<HTMLDialogElement | null>(null);
+
+  const openCreateRecordDialog = () => {
+    if (dialog.current) {
+      dialog.current.showModal();
+    }
+  };
+
+  const closeCreateRecordDialog = () => {
+    if (dialog.current) {
+      dialog.current.close();
+    }
+  };
+
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -10,18 +26,19 @@ const Header = () => {
           <div className="flex items-center">
             <div className="flex items-center">
               <Logo className="fill-white w-8" />
-              <h1 className="text-white ml-3">MindTracker</h1>
+              <h1 className="text-white ml-3 cursor-default">MindTracker</h1>
             </div>
             <div className="sm:ml-6 ">
               <div className="flex">
-                {LINKS.map((link, idx) => (
-                  <Link key={idx} href={link.url}>{link.title}</Link>
-                ))}
+                <NavLink href="/home">Home</NavLink>
+                <NavLink type={NavLinkTypes.Button} onClick={openCreateRecordDialog}>Create</NavLink>
+                <NavLink href="/stats">Analyze</NavLink>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <RecordDialog innerRef={dialog} onCancel={closeCreateRecordDialog} />
     </nav>
   );
 };

@@ -5,3 +5,9 @@
 #root {
   height: 100vh;
 }
+
+@layer components {
+  .dialog::backdrop {
+    @apply bg-gray-500 bg-opacity-75;
+  }
+}
