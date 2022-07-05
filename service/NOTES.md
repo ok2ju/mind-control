@@ -12,3 +12,13 @@
 - Add logging;
 - Add swagger UI service (docker image);
 - Use docker compose;
+
+## Docker (legacy)
+
+- docker run --rm --name mtpostgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
+- docker run --rm --name mtadminer --link mtpostgres:db -p 8082:8080 -d adminer
+
+Adminer login:
+Server: db (as it linked under `db` name)
+Username: postgres
+Password: password

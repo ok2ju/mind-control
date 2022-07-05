@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:latest'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mind-tracker
+    #env_file:
+    #  - .env # The name of your environment file (the one at the repository root)
+    volumes:
+      # Here, we share the folder `/var/data` in our repository, with the default PostgreSQL data path.
+      # It means that every time the repository is modifying the data inside
+      # of `/var/lib/postgresql/data/`, automatically the change will appear in `/var/data`.
+      # You don't need to create the `/var/data` folder. Docker Compose will do it for you.
+      - ./var/data/:/var/lib/postgresql/data/
+
+  adminer:
+    image: 'adminer:latest'
+    ports:
+      - 8082:8080
+    links:
+      - postgres
