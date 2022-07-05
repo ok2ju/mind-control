@@ -10,18 +10,16 @@
 # Available commands
 
 ```sh
-$ make run-db # Run database docker container (:5432)
-$ make stop-db # Stop database docker container
+$ make run # runs development environment
+$ make stop # stop development environment
+$ make ps # check running services
 
-$ make run-db-admin # Run postgres admin panel (UI) docker container (:8082)
-$ make stop-db-admin # Stop postgres admin panel docker container
-
-$ make run-service # Run REST service (:5000)
+$ make service # runs REST service (:5000)
 ```
 
 # Running service
 
-1. Run database docker container using `make run-db` command
+1. Run development environment (database, db-adminer) using `make run` command
 2. A python virtual environment should be created and activated
 
 ```sh
@@ -30,7 +28,7 @@ $ source venv/bin/activate
 $ deactivate # Used to deactivate env
 ```
 
-3. Run service using `make run-service` command
+3. Run service using `make service` command
 
 # Notes
 
