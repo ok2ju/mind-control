@@ -10,8 +10,9 @@
 - Consider to use `pyenv` (Pipfile);
 - ~~Configure app via env variables~~;
 - Add logging;
-- Add swagger UI service (docker image);
-- Use docker compose;
+- ~~Add swagger UI service (docker image)~~;
+- ~~Use docker compose~~;
+- Folder structure;
 
 ## Docker (legacy)
 
