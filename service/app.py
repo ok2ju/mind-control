@@ -4,7 +4,7 @@ from functools import wraps
 
 from flask import Flask, request, jsonify, Response, _request_ctx_stack
 from flask_migrate import Migrate
-from flask_cors import cross_origin
+from flask_cors import CORS
 from six.moves.urllib.request import urlopen
 from jose import jwt
 from models import db, MindModel
@@ -12,6 +12,8 @@ from models import db, MindModel
 app = Flask(__name__)
 app.config.from_pyfile('settings.py')
 logging.basicConfig(filename='logs.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
+
+CORS(app, resources={r'/api/v1/*': {'origins': '*'}})
 
 db.init_app(app)
 migrate = Migrate(app, db)
@@ -143,14 +145,11 @@ def not_found(error=None):
     return response
 
 @app.route('/healthcheck')
-@cross_origin(headers=["Content-Type", "Authorization"])
 def print_hello():
     app.logger.info('Application is up and running')
     return jsonify(message='Hello, Flask!')
 
 @app.route('/api/v1/records', methods = ['GET'])
-@cross_origin(headers=["Content-Type", "Authorization"])
-@cross_origin(headers=["Access-Control-Allow-Origin", "*"])
 @requires_auth
 def get_records():
     records = MindModel.query.all()
@@ -167,8 +166,6 @@ def get_records():
     return { 'count': len(results), 'entities': results }
 
 @app.route('/api/v1/records', methods = ['POST'])
-@cross_origin(headers=["Content-Type", "Authorization"])
-@cross_origin(headers=["Access-Control-Allow-Origin", "*"])
 @requires_auth
 def add_record():
     data = request.get_json()

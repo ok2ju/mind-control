@@ -1,11 +1,15 @@
-import Axios from './config';
-import { Record, RecordsListResponse } from '../types/record';
+import { useQuery } from "react-query";
+import { useAxios } from "../context/axios-context";
+import { RecordsListResponse } from "../types/record";
 
-export default {
-  list(): Promise<RecordsListResponse> {
-    return Axios.get('/records');
-  },
-  create(record: Record): Promise<Record> {
-    return Axios.post('/records', record);
-  }
+export const useRecords = (enabled: boolean = true) => {
+  const axios = useAxios();
+
+  return useQuery(
+    "records",
+    async () => {
+      return await axios.get<RecordsListResponse, any>("/records");
+    },
+    { enabled }
+  );
 };
