@@ -22,5 +22,5 @@ ps:
 service:
 	@ echo "---> Running service ..."
 	@ flask db upgrade
-	@ flask run
+	@ python3 manage.py
 .PHONY: service

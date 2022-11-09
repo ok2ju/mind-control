@@ -1,7 +1,6 @@
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+from app import db
 
 class MindModel(db.Model):
     __tablename__ = "mind"
