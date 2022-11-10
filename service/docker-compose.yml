@@ -1,8 +1,8 @@
-version: '3'
+version: "3"
 
 services:
   postgres:
-    image: 'postgres:latest'
+    image: "postgres:latest"
     ports:
       - 5432:5432
     environment:
@@ -19,17 +19,17 @@ services:
       - ./var/data/:/var/lib/postgresql/data/
 
   adminer:
-    image: 'adminer:latest'
+    image: "adminer:latest"
     ports:
       - 8082:8080
     links:
       - postgres
 
   swagger-ui:
-    image: 'swaggerapi/swagger-ui'
+    image: "swaggerapi/swagger-ui"
     ports:
       - 8088:8080
     volumes:
-      - ./spec/http:/usr/share/nginx/html/swagger # our api.yml now available in internal container folder
+      - ./swagger/http:/usr/share/nginx/html/swagger # our api.yml now available in internal container folder
     environment:
       API_URL: swagger/api.yml

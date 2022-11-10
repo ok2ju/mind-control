@@ -23,7 +23,7 @@ $ make service # runs REST service (:5000)
 2. A python virtual environment should be created and activated
 
 ```sh
-$ python3 -m venv venv
+$ python3 -m venv .venv
 $ source venv/bin/activate
 $ deactivate # Used to deactivate env
 ```
@@ -33,26 +33,38 @@ $ deactivate # Used to deactivate env
 # Notes
 
 Install python deps:
+
 ```sh
+$ pip install poetry
+$ poetry update
+# or
 $ pip install -r requirements.txt
 ```
 
 Freeze python deps:
+
 ```sh
+$ poetry export --dev -f requirements.txt --output requirements.txt
+# or
 $ pip freeze > requirements.txt
 ```
 
 Install python package:
+
 ```sh
+$ poetry add package_name
+# or
 $ pip install package_name
 ```
 
 Init database:
+
 ```sh
 $ flask db init # create a migration repository
 ```
 
 Run migration:
+
 ```sh
 $ flask db migrate -m "Initial migration" # generate migration
 $ flask db upgrade # apply the migration to the database
@@ -61,6 +73,7 @@ $ flask db upgrade # apply the migration to the database
 In case we add, delete, or change any columns, we can always execute the migrate and upgrade commands to reflect these changes in our database too.
 
 Run application:
+
 ```sh
 $ flask run
 ```

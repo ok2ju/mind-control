@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mind-control-service"
+version = "0.1.0"
+description = ""
+authors = ["ok2ju <soulSpringg@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flask = "^2.2.2"
+flask-migrate = "^3.1.0"
+flask-cors = "^3.0.10"
+sqlalchemy = "^1.4.43"
+flask-sqlalchemy = "^3.0.2"
+psycopg2-binary = "^2.9.5"
+python-dotenv = "^0.21.0"
+python-jose = "^3.3.0"
+six = "^1.16.0"
