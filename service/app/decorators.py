@@ -79,8 +79,8 @@ def requires_auth(func):
                 payload = jwt.decode(
                     token,
                     rsa_key,
-                    algorithms=app.config["ALGORITHMS"],
-                    audience=app.config["API_IDENTIFIER"],
+                    algorithms=app.config["AUTH0_ALGORITHMS"],
+                    audience=app.config["AUTH0_API_IDENTIFIER"],
                     issuer="https://" + app.config["AUTH0_DOMAIN"] + "/"
                 )
             except jwt.ExpiredSignatureError:

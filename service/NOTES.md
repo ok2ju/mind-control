@@ -4,15 +4,18 @@
 - Work with postgres in python - [link](https://stackabuse.com/using-sqlalchemy-with-flask-and-postgresql/)
 - Flask tutorial - [link](https://pythonbasics.org/flask-tutorial-hello-world/)
 - Virtual environments article - [linl](https://docs.python-guide.org/dev/virtualenvs/#virtualenvironments-ref)
+- Black, flake8, pylint [link](http://www.sefidian.com/2021/08/03/how-to-use-black-flake8-and-isort-to-format-python-codes/)
+- Microservice scaffold [link](https://github.com/python-microservices/microservices-scaffold)
 
 ## TODO
 
-- Consider to use `pyenv` (Pipfile);
+- ~~Consider to use `pyenv` (Pipfile)~~;
 - ~~Configure app via env variables~~;
-- Add logging;
+- ~~Add logging~~;
 - ~~Add swagger UI service (docker image)~~;
 - ~~Use docker compose~~;
-- Folder structure;
+- ~~Folder structure~~;
+- Add Black, flake8, pylint;
 
 ## Docker (legacy)
 

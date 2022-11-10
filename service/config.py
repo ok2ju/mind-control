@@ -10,8 +10,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
 
     AUTH0_DOMAIN = environ.get('AUTH0_DOMAIN')
-    API_IDENTIFIER = environ.get('API_IDENTIFIER')
-    ALGORITHMS = ["RS256"]
+    AUTH0_API_IDENTIFIER = environ.get('AUTH0_API_IDENTIFIER')
+    AUTH0_ALGORITHMS = ["RS256"]
 
     @staticmethod
     def init_app(app):

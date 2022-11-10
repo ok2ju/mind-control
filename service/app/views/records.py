@@ -1,8 +1,7 @@
 from flask import Blueprint, request, current_app, jsonify
 
-from app import db
 from app.decorators import requires_auth
-from app.models import MindModel
+from app.models import db, MindModel
 
 records_views = Blueprint('records_views', __name__, url_prefix='/api/v1')
 
@@ -19,7 +18,7 @@ def get_records():
         } for mind in records]
 
     app = current_app._get_current_object()
-    app.logger.info('Requested records:', len(results))
+    app.logger.info('Requested records: %s', len(results))
 
     return jsonify({ 'count': len(results), 'entities': results }), 200
 

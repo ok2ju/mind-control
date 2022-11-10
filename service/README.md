@@ -35,18 +35,25 @@ $ deactivate # Used to deactivate env
 Install python deps:
 
 ```sh
+$ pip install poetry
+$ poetry update
+# or
 $ pip install -r requirements.txt
 ```
 
 Freeze python deps:
 
 ```sh
+$ poetry export --dev -f requirements.txt --output requirements.txt
+# or
 $ pip freeze > requirements.txt
 ```
 
 Install python package:
 
 ```sh
+$ poetry add package_name
+# or
 $ pip install package_name
 ```
 

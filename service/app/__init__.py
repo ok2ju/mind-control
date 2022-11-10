@@ -1,22 +1,20 @@
 import logging
 
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 
 from config import Config
 
-db = SQLAlchemy()
-
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, instance_relative_config=True)
 
     app.config.from_object(Config)
     Config.init_app(app)
     logging.basicConfig(filename='logs.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
     CORS(app, resources={r'/api/v1/*': {'origins': '*'}})
 
+    from app.models import db
     db.init_app(app)
     migrate = Migrate(app, db)
 
