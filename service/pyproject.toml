@@ -16,3 +16,24 @@ psycopg2-binary = "^2.9.5"
 python-dotenv = "^0.21.0"
 python-jose = "^3.3.0"
 six = "^1.16.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+pylint = "^2.15.5"
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
